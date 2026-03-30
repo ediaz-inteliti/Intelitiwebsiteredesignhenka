@@ -2,18 +2,18 @@ import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 /*
- * Henka Style Guide v2.2 — "Pure Swiss Grid · Services (Expanded 10-item)"
+ * Henka Style Guide v2.3 — "Engineering Table · 2×5 Services Grid"
  * ──────────────────────────────────────────────────────────────────────────
- * Grid lines:   #0b334c at 15% opacity (subtle skeleton)
- * Labels:       12px Regular, #84bd2a
- * Titles:       28px Bold, #0b334c
- * Description:  14px Regular, rgba(11,51,76,0.65)
- * Tags:         13px Regular, #0b334c, 16px gap
- * Spacing:      8pt system — 48px vertical row padding
- * Hover:        Full-viewport-width #f4f6f9, instant swap
- * Radius:       Strict 0px
- * Arrow:        1px stroke, 45°, appears on hover
- * Icons:        1px stroke, schematic line-art SVG, 24×24
+ * Layout:      2-column CSS Grid (5 items × 2 cols), 1px center divider
+ * Grid lines:  #0b334c at 15% opacity — top, bottom, between rows, center col
+ * Labels:      11px Bold #84bd2a — index numbers
+ * Titles:      22px Bold #0b334c — Open Sans
+ * Tags:        11px Regular #0b334c at 55% — capability annotations
+ * Spacing:     8pt system — 28px vertical cell padding
+ * Hover:       Cell-scoped #f4f6f9, cursor pointer
+ * Radius:      Strict 0px
+ * Arrow:       1px stroke, appears on hover
+ * Icons:       1px stroke, schematic line-art SVG, 24×24, fixed left axis
  */
 
 const NAVY = '#0b334c';
@@ -125,7 +125,6 @@ const SvcIcons: Record<string, React.FC> = {
 interface Service {
   number: string;
   title: string;
-  description: string;
   capabilities: string[];
   iconKey: string;
 }
@@ -134,128 +133,86 @@ const services: Service[] = [
   {
     number: '01',
     title: 'Diagnóstico Organizacional',
-    description:
-      'Evaluación de madurez en cinco ejes críticos: procesos, personas, tecnología, liderazgo y cultura. Entregable: Índice de Preparación con benchmark sectorial y hoja de ruta priorizada.',
     capabilities: ['Modelo de Madurez', 'Evaluación de Capacidad', 'Mapeo de Stakeholders', 'Análisis de Brechas'],
     iconKey: 'diagnostico',
   },
   {
     number: '02',
     title: 'Gestión del Cambio',
-    description:
-      'Despliegue del modelo ADKAR con planes de comunicación segmentados. Dashboards en tiempo real para monitorear tasas de adopción y alertas de resistencia organizacional.',
     capabilities: ['Estrategia de Adopción', 'Comunicación del Cambio', 'Planes de Mitigación', 'Gestión de Resistencia'],
     iconKey: 'cambio',
   },
   {
     number: '03',
     title: 'Coaching Ejecutivo',
-    description:
-      'Programa LEAD™ de 12 semanas con coaching 1:1 certificado. Desarrollo de capacidades directivas: escucha activa, ejecución estratégica, alineación organizacional y toma de decisiones.',
     capabilities: ['Liderazgo Transformacional', 'Desarrollo de Competencias', 'Alineación Estratégica', 'Mentoría C-Suite'],
     iconKey: 'coaching',
   },
   {
     number: '04',
     title: 'Formación & Desarrollo',
-    description:
-      'Ecosistema de aprendizaje híbrido: talleres presenciales, módulos e-learning corporativos y programas a demanda. Certificaciones internas alineadas a marcos internacionales (PMI, Prosci, ICF).',
     capabilities: ['Programas On-Demand', 'Talleres Presenciales', 'Certificaciones Internas', 'E-Learning Corporativo'],
     iconKey: 'formacion',
   },
   {
     number: '05',
     title: 'Transformación Cultural',
-    description:
-      'Mapeo de artefactos culturales, valores implícitos y rituales operativos. Diseño de arquitectura cultural objetivo con KPIs de clima medidos en ciclos de 90 días y revisiones de Cultura OS™.',
     capabilities: ['Diseño de Cultura', 'Valores Organizacionales', 'Medición de Clima', 'Rituales de Innovación'],
     iconKey: 'cultura',
   },
   {
     number: '06',
     title: 'Estrategia de Transformación',
-    description:
-      'Co-diseño de la visión estratégica de transformación. Definición de OKRs de cambio, roadmap ejecutivo por fases e identificación de quick-wins de alto impacto en los primeros 90 días.',
     capabilities: ['Visión Estratégica', 'Roadmap por Fases', 'OKRs de Cambio', 'Gestión de Portafolio'],
     iconKey: 'estrategia',
   },
   {
     number: '07',
     title: 'Adopción Tecnológica',
-    description:
-      'Gestión de la adopción de plataformas ERP, CRM, HRIS y herramientas de colaboración. Estrategias de rollout, capacitación de superusuarios y hypercare post-implementación.',
     capabilities: ['ERP / CRM / HRIS', 'Rollout Strategy', 'Superuser Network', 'Hypercare Post-Go-Live'],
     iconKey: 'tecnologia',
   },
   {
     number: '08',
     title: 'Comunicación Estratégica',
-    description:
-      'Diseño de narrativas de cambio y planes de comunicación multicanal. Segmentación por stakeholder, medición de efectividad de mensajes y gestión de momentos críticos de la transición.',
     capabilities: ['Narrativa de Cambio', 'Planes Multicanal', 'Segmentación de Audiencias', 'Crisis Communication'],
     iconKey: 'comunicacion',
   },
   {
     number: '09',
     title: 'Medición & ROI Transformacional',
-    description:
-      'Sistema de métricas de ROI transformacional: productividad, retención de talento, velocidad de decisión y NPS interno. Reportes ejecutivos con modelos de correlación causal validados.',
     capabilities: ['ROI-T Dashboard', 'NPS Interno', 'Retention Analytics', 'Executive Reports'],
     iconKey: 'medicion',
   },
   {
     number: '10',
     title: 'Sostenibilidad del Cambio',
-    description:
-      'Institucionalización del cambio mediante gobierno, roles de Change Champion y revisiones de salud organizacional trimestrales. Modelo de auto-suficiencia a 18 meses post-proyecto.',
     capabilities: ['Change Champions', 'Gobierno del Cambio', 'Health Reviews', 'Self-Sufficiency Model'],
     iconKey: 'sostenibilidad',
   },
 ];
 
-function GridLine() {
-  return (
-    <div
-      style={{
-        position: 'relative',
-        width: '100vw',
-        marginLeft: 'calc(-50vw + 50%)',
-        height: '1px',
-        backgroundColor: GRID_LINE,
-      }}
-    />
-  );
-}
-
-function ServiceRow({ service }: { service: Service }) {
+// ── Cell: one service entry ──
+function ServiceCell({ service, side }: { service: Service; side: 'left' | 'right' }) {
   const [isHovered, setIsHovered] = useState(false);
   const Icon = SvcIcons[service.iconKey];
 
   return (
     <div
+      className="svc-cell"
       style={{
-        width: '100vw',
-        marginLeft: 'calc(-50vw + 50%)',
         backgroundColor: isHovered ? HOVER_BG : 'transparent',
-        transition: 'none',
         cursor: 'pointer',
+        // Inner padding: 28px top/bottom; 40px toward center divider, 0 toward outer edge
+        padding: side === 'left' ? '28px 40px 28px 0' : '28px 0 28px 40px',
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div
-        className="svc-row-inner"
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '48px max(32px, 5vw)',
-          display: 'grid',
-          gridTemplateColumns: '56px 52px 1fr',
-          alignItems: 'start',
-          gap: '0 24px',
-        }}
-      >
-        {/* Col 1: Index number */}
+      {/* Row: [index 28px] [icon 24px + 12px gap] [title + arrow] */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+
+        {/* Index number — fixed width anchors vertical axis */}
         <span
           style={{
             fontFamily: 'var(--font-open-sans)',
@@ -263,31 +220,43 @@ function ServiceRow({ service }: { service: Service }) {
             fontWeight: 700,
             letterSpacing: '1.5px',
             color: GREEN,
-            paddingTop: '4px',
+            minWidth: '28px',
+            flexShrink: 0,
+            paddingTop: '3px',
+            lineHeight: 1,
           }}
         >
           {service.number}
         </span>
 
-        {/* Col 2: Schematic icon */}
-        <div style={{ paddingTop: '2px' }}>
+        {/* Icon — 24×24, aligned to column axis (28px from cell edge) */}
+        <div style={{ width: '24px', flexShrink: 0, paddingTop: '1px' }}>
           {Icon && <Icon />}
         </div>
 
-        {/* Col 3: Content */}
-        <div>
+        {/* Content: title + capability tags */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+
           {/* Title row */}
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '10px' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              marginBottom: '8px',
+            }}
+          >
             <h3
               className="svc-title"
               style={{
                 fontFamily: 'var(--font-open-sans)',
-                fontSize: '28px',
+                fontSize: '22px',
                 fontWeight: 700,
                 color: NAVY,
                 lineHeight: 1.2,
                 margin: 0,
-                letterSpacing: '-0.4px',
+                letterSpacing: '-0.3px',
+                textAlign: 'left',
               }}
             >
               {service.title}
@@ -297,44 +266,27 @@ function ServiceRow({ service }: { service: Service }) {
                 opacity: isHovered ? 1 : 0,
                 transition: 'none',
                 flexShrink: 0,
-                marginTop: '6px',
               }}
             >
-              <ArrowUpRight size={18} strokeWidth={1} style={{ color: NAVY }} />
+              <ArrowUpRight size={15} strokeWidth={1} style={{ color: NAVY }} />
             </div>
           </div>
 
-          {/* Technical description */}
-          <p
-            style={{
-              fontFamily: 'var(--font-open-sans)',
-              fontSize: '14px',
-              fontWeight: 400,
-              color: 'rgba(11, 51, 76, 0.65)',
-              lineHeight: 1.65,
-              margin: '0 0 14px 0',
-              maxWidth: '680px',
-            }}
-          >
-            {service.description}
-          </p>
-
-          {/* Capability tags */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 16px' }}>
+          {/* Capability tags — Open Sans Regular per spec */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px 14px' }}>
             {service.capabilities.map((cap, i) => (
               <span
                 key={i}
                 style={{
                   fontFamily: 'var(--font-open-sans)',
-                  fontSize: '12px',
-                  fontWeight: 700,
+                  fontSize: '11px',
+                  fontWeight: 400,
                   letterSpacing: '0.5px',
                   color: NAVY,
+                  opacity: 0.55,
                   lineHeight: 1.6,
-                  padding: '3px 0',
-                  borderBottom: isHovered ? `1px solid ${GRID_LINE}` : '1px solid transparent',
-                  transition: 'none',
                   textTransform: 'uppercase',
+                  textAlign: 'left',
                 }}
               >
                 {cap}
@@ -347,52 +299,83 @@ function ServiceRow({ service }: { service: Service }) {
   );
 }
 
-export function ServicesGrid() {
-  return (
-    <div
-      className="services-grid-section"
-      style={{ position: 'relative', overflow: 'hidden' }}
-    >
-      {services.map((service) => (
-        <div key={service.number}>
-          <div
-            className="mx-auto"
-            style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}
-          >
-            <GridLine />
-          </div>
-          <ServiceRow service={service} />
-        </div>
-      ))}
+// ── Hairline divider ──
+function Hairline() {
+  return <div style={{ height: '1px', backgroundColor: GRID_LINE }} />;
+}
 
-      {/* Bottom closing grid line */}
-      <div
-        className="mx-auto"
-        style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}
-      >
-        <GridLine />
+export function ServicesGrid() {
+  const leftCol = services.slice(0, 5);
+  const rightCol = services.slice(5, 10);
+
+  return (
+    <div className="services-grid-section" style={{ position: 'relative' }}>
+      <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
+
+        {/* Top bounding hairline */}
+        <Hairline />
+
+        {/* 2-column engineering table: [left col] [1px divider] [right col] */}
+        <div
+          className="svc-table"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1px 1fr',
+          }}
+        >
+          {/* Left column: 01–05 */}
+          <div>
+            {leftCol.map((svc, i) => (
+              <div key={svc.number}>
+                {i > 0 && <Hairline />}
+                <ServiceCell service={svc} side="left" />
+              </div>
+            ))}
+          </div>
+
+          {/* Vertical center divider — stretches to full table height via Grid */}
+          <div style={{ backgroundColor: GRID_LINE }} />
+
+          {/* Right column: 06–10 */}
+          <div>
+            {rightCol.map((svc, i) => (
+              <div key={svc.number}>
+                {i > 0 && <Hairline />}
+                <ServiceCell service={svc} side="right" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom bounding hairline */}
+        <Hairline />
       </div>
 
       <style>{`
+        /* Tablet: narrow columns, reduce font size */
         @media (max-width: 900px) {
-          .svc-row-inner {
-            grid-template-columns: 40px 40px 1fr !important;
-            gap: 0 16px !important;
-            padding-top: 32px !important;
-            padding-bottom: 32px !important;
-          }
-          .svc-title {
-            font-size: 22px !important;
-          }
-        }
-        @media (max-width: 560px) {
-          .svc-row-inner {
-            grid-template-columns: 1fr !important;
-            padding-top: 24px !important;
-            padding-bottom: 24px !important;
-          }
           .svc-title {
             font-size: 19px !important;
+          }
+          .svc-cell {
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+          }
+        }
+        /* Mobile: single column, remove center divider */
+        @media (max-width: 680px) {
+          .svc-table {
+            grid-template-columns: 1fr !important;
+          }
+          /* Hide the 1px center divider column */
+          .svc-table > div:nth-child(2) {
+            display: none !important;
+          }
+          .svc-cell {
+            padding: 24px 0 !important;
+          }
+          .svc-title {
+            font-size: 18px !important;
           }
         }
       `}</style>

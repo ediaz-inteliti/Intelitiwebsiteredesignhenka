@@ -26,14 +26,16 @@ export default function App() {
       {/* Fórmula del Éxito — Inspiration pivot: anxiety → aspiration */}
       <FormulaExitoSection />
 
-      {/* Global Reach Map — Network schematic / KPI annotation */}
-      <GlobalReachMap />
-
-      {/* NUESTROS SERVICIOS — Divider */}
-      <SectionDivider label="NUESTROS SERVICIOS" bgColor="#ffffff" paddingTop="128px" />
+      {/* NUESTROS SERVICIOS — Divider (96px gap after La Fórmula) */}
+      <SectionDivider label="NUESTROS SERVICIOS" bgColor="#ffffff" paddingTop="96px" />
 
       {/* Promoted Services Section */}
       <TeamSection />
+
+      {/* Global Reach Map — Network schematic / KPI annotation (96px gap after Servicios) */}
+      <div style={{ marginTop: '96px' }}>
+        <GlobalReachMap />
+      </div>
 
       {/* Trust Ecosystem Section (includes internal dividers) */}
       <TrustEcosystemSection />
