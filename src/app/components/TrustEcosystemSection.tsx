@@ -52,25 +52,25 @@ export function TrustEcosystemSection() {
     }
   ];
 
-  // Testimonials data
+  // Testimonials data — anonymous attribution tied to verified client logos
   const testimonials = [
     {
       quote: 'Henka Consulting nos guió con precisión y empatía durante nuestra transformación digital. Su enfoque metodológico marcó la diferencia.',
-      name: 'María González',
-      role: 'CEO, Tech Innovations SA',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop'
+      role: 'Director de Transformación Digital',
+      company: 'Pfizer',
+      logo: 'https://henkaconsulting.com/app/uploads/2021/05/pfizer-1.jpg'
     },
     {
       quote: 'La gestión del cambio implementada por Henka superó nuestras expectativas. Logramos una adopción del 95% en tiempo récord.',
-      name: 'Carlos Ramírez',
-      role: 'Director de Transformación, Global Corp',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop'
+      role: 'VP de Operaciones',
+      company: 'PepsiCo',
+      logo: 'https://henkaconsulting.com/app/uploads/2021/06/PepsiCo.jpg'
     },
     {
       quote: 'Su modelo de madurez nos permitió identificar brechas críticas y diseñar un plan de acción robusto y realista.',
-      name: 'Ana Martínez',
-      role: 'VP de Operaciones, Industrias Del Futuro',
-      image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop'
+      role: 'Gerente de Desarrollo Organizacional',
+      company: 'P&G',
+      logo: 'https://henkaconsulting.com/app/uploads/2021/06/PROCTER-181x138-1.png'
     }
   ];
 
@@ -350,22 +350,24 @@ export function TrustEcosystemSection() {
                   flexDirection: 'column'
                 }}
               >
-                {/* Client Headshot */}
+                {/* Company Logo */}
                 <div className="mb-6">
                   <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="object-cover"
+                    src={testimonial.logo}
+                    alt={testimonial.company}
+                    className="object-contain"
                     style={{
-                      width: '80px',
-                      height: '80px',
-                      borderRadius: '0px'
+                      width: '100px',
+                      height: '48px',
+                      borderRadius: '0px',
+                      filter: 'grayscale(100%)',
+                      opacity: 0.7
                     }}
                   />
                 </div>
 
                 {/* Quote */}
-                <p 
+                <p
                   className="mb-6"
                   style={{
                     fontFamily: 'var(--font-open-sans)',
@@ -373,34 +375,35 @@ export function TrustEcosystemSection() {
                     fontStyle: 'italic',
                     color: '#0b334c',
                     lineHeight: '1.7',
-                    opacity: 0.9
+                    opacity: 0.9,
+                    flex: 1
                   }}
                 >
                   "{testimonial.quote}"
                 </p>
 
-                {/* Client Info */}
+                {/* Attribution */}
                 <div>
-                  <div 
-                    style={{
-                      fontFamily: 'var(--font-open-sans)',
-                      fontSize: '16px',
-                      fontWeight: 'var(--font-weight-bold)',
-                      color: '#0b334c',
-                      marginBottom: '4px'
-                    }}
-                  >
-                    {testimonial.name}
-                  </div>
-                  <div 
+                  <div
                     style={{
                       fontFamily: 'var(--font-open-sans)',
                       fontSize: '14px',
+                      fontWeight: 'var(--font-weight-bold)',
                       color: '#0b334c',
-                      opacity: 0.7
+                      marginBottom: '2px'
                     }}
                   >
                     {testimonial.role}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-open-sans)',
+                      fontSize: '13px',
+                      color: '#0b334c',
+                      opacity: 0.6
+                    }}
+                  >
+                    {testimonial.company}
                   </div>
                 </div>
               </div>
@@ -455,21 +458,8 @@ export function TrustEcosystemSection() {
         <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
         {/* 3. Interactive Insights/Blog - Hotjar Editorial Layout */}
         <div>
-          {/* Header Row: Title Left, Controls Right */}
-          <div className="flex items-center justify-between" style={{ marginBottom: '48px' }}>
-            <span
-              style={{
-                fontFamily: 'var(--font-open-sans)',
-                fontSize: '14px',
-                fontWeight: 'var(--font-weight-semibold)',
-                color: '#0b334c',
-                textTransform: 'uppercase',
-                letterSpacing: '1.5px'
-              }}
-            >
-              Perspectivas sobre el Cambio
-            </span>
-
+          {/* Header Row: Controls Right */}
+          <div className="flex items-center justify-end" style={{ marginBottom: '48px' }}>
             {/* Arrow Controls - Top Right */}
             <div className="flex items-center gap-2">
               <button

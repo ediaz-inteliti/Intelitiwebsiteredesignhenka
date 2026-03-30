@@ -1,6 +1,8 @@
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { GanchosSection } from './components/GanchosSection';
+import { FormulaExitoSection } from './components/FormulaExitoSection';
+import { GlobalReachMap } from './components/GlobalReachMap';
 import { SectionDivider } from './components/SectionDivider';
 import { TeamSection } from './components/TeamSection';
 import { TrustEcosystemSection } from './components/TrustEcosystemSection';
@@ -18,11 +20,14 @@ export default function App() {
       {/* Hero Section - Full viewport with integrated nav */}
       <HeroSection />
 
-      {/* EL DESAFÍO — Divider */}
-      <SectionDivider label="EL DESAFÍO" bgColor="#ffffff" paddingTop="80px" />
-
-      {/* 6-Gancho Section + 70% Statement */}
+      {/* EL DESAFÍO — Unified 1x4 Module */}
       <GanchosSection />
+
+      {/* Fórmula del Éxito — Inspiration pivot: anxiety → aspiration */}
+      <FormulaExitoSection />
+
+      {/* Global Reach Map — Network schematic / KPI annotation */}
+      <GlobalReachMap />
 
       {/* NUESTROS SERVICIOS — Divider */}
       <SectionDivider label="NUESTROS SERVICIOS" bgColor="#ffffff" paddingTop="128px" />

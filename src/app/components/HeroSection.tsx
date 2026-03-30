@@ -15,6 +15,7 @@ export function HeroSection() {
         loop
         muted
         playsInline
+        poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 0 }}
       >
@@ -146,41 +147,69 @@ export function HeroSection() {
               Acompañamos a las organizaciones en sus procesos de
               transformación con metodologías probadas y un enfoque humano.
             </p>
-          </div>
 
-          {/* SCROLL indicator — anchored to right edge of content grid */}
-          <div
-            className="hidden md:flex flex-col items-center"
-            style={{
-              position: 'absolute',
-              right: 'max(32px, 5vw)',
-              bottom: '-120px',
-              gap: '8px',
-            }}
-          >
-            <span
+            {/* Primary CTA — below subheading */}
+            <button
               style={{
+                marginTop: '40px',
                 fontFamily: 'var(--font-open-sans)',
-                fontSize: '12px',
+                fontSize: '14px',
                 fontWeight: 700,
-                color: 'rgba(255, 255, 255, 0.5)',
-                letterSpacing: '1.5px',
-                textTransform: 'uppercase',
-                writingMode: 'vertical-lr',
+                backgroundColor: '#84bd2a',
+                color: '#ffffff',
+                borderRadius: '0px',
+                border: 'none',
+                cursor: 'pointer',
+                letterSpacing: '0.3px',
+                padding: '16px 40px',
+                display: 'inline-block',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = '2px 2px 0px rgba(255,255,255,0.3)';
+                e.currentTarget.style.transform = 'translate(-1px, -1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'translate(0, 0)';
               }}
             >
-              SCROLL
-            </span>
-            <div
-              style={{
-                width: '1px',
-                height: '60px',
-                backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                borderRadius: '0px',
-              }}
-            />
+              Consulta Gratuita
+            </button>
           </div>
         </div>
+      </div>
+
+      {/* SCROLL indicator — anchored to hero section bottom-right */}
+      <div
+        className="hidden md:flex flex-col items-center"
+        style={{
+          position: 'absolute',
+          right: 'max(32px, 5vw)',
+          bottom: '48px',
+          gap: '8px',
+          zIndex: 10,
+        }}
+      >
+        <span
+          style={{
+            fontFamily: 'var(--font-open-sans)',
+            fontSize: '12px',
+            fontWeight: 700,
+            color: 'rgba(255, 255, 255, 0.5)',
+            letterSpacing: '1.5px',
+            textTransform: 'uppercase',
+            writingMode: 'vertical-lr',
+          }}
+        >
+          SCROLL
+        </span>
+        <div
+          style={{
+            width: '1px',
+            height: '60px',
+            backgroundColor: 'rgba(255, 255, 255, 0.15)',
+          }}
+        />
       </div>
 
       {/* Bottom accent line — solid green brand border */}

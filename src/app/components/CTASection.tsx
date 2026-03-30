@@ -117,7 +117,7 @@ export function CTASection() {
                 fontFamily: 'var(--font-open-sans)',
                 fontSize: '28px',
                 fontWeight: 'var(--font-weight-extrabold)',
-                color: 'var(--henka-green)'
+                color: 'var(--henka-white)'
               }}
             >
               98%
@@ -135,50 +135,50 @@ export function CTASection() {
           </div>
 
           <div>
-            <div 
+            <div
               className="mb-2"
-              style={{ 
+              style={{
                 fontFamily: 'var(--font-open-sans)',
                 fontSize: '28px',
                 fontWeight: 'var(--font-weight-extrabold)',
-                color: 'var(--henka-green)'
+                color: 'var(--henka-white)'
               }}
             >
-              24/7
+              +15 años
             </div>
-            <div 
-              style={{ 
+            <div
+              style={{
                 fontFamily: 'var(--font-open-sans)',
                 fontSize: '14px',
                 color: 'var(--henka-white)',
                 opacity: 0.85
               }}
             >
-              Soporte Disponible
+              De Experiencia Comprobada
             </div>
           </div>
 
           <div>
-            <div 
+            <div
               className="mb-2"
-              style={{ 
+              style={{
                 fontFamily: 'var(--font-open-sans)',
                 fontSize: '28px',
                 fontWeight: 'var(--font-weight-extrabold)',
-                color: 'var(--henka-green)'
+                color: 'var(--henka-white)'
               }}
             >
-              100%
+              +200
             </div>
-            <div 
-              style={{ 
+            <div
+              style={{
                 fontFamily: 'var(--font-open-sans)',
                 fontSize: '14px',
                 color: 'var(--henka-white)',
                 opacity: 0.85
               }}
             >
-              Garantía de Calidad
+              Proyectos Completados
             </div>
           </div>
         </div>

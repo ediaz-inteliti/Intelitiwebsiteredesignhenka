@@ -82,6 +82,12 @@ export function TeamSection() {
                   left: dot.x,
                   top: dot.y,
                   zIndex: isActive ? 20 : 10,
+                  width: '44px',
+                  height: '44px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
                 }}
                 onMouseEnter={() => setActiveDot(dot.id)}
                 onMouseLeave={() => setActiveDot(null)}
@@ -95,7 +101,6 @@ export function TeamSection() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    cursor: 'pointer',
                     transition: 'background-color 300ms ease, transform 300ms ease',
                     transform: isActive ? 'scale(1.15)' : 'scale(1)',
                     boxShadow: 'none',
