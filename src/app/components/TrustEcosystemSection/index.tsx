@@ -56,7 +56,7 @@ export function TrustEcosystemSection() {
               }}
             >
               <img
-                src="/map.svg"
+                src={`${import.meta.env.BASE_URL}map.svg`}
                 alt="Mapa de alcance global de Henka Consulting"
                 style={{
                   display: 'block',
