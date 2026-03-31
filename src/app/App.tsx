@@ -1,49 +1,33 @@
 import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
-import { GanchosSection } from './components/GanchosSection';
-import { FormulaExitoSection } from './components/FormulaExitoSection';
-
-import { SectionDivider } from './components/SectionDivider';
-import { TeamSection } from './components/TeamSection';
+import { HeroSection } from './components/Hero';
+import { TheChallenge } from './components/TheChallenge';
+import { TheFormula } from './components/TheFormula';
+import { Services } from './components/Services';
 import { TrustEcosystemSection } from './components/TrustEcosystemSection';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
-
 import { BackToTop } from './components/BackToTop';
 
 export default function App() {
   return (
-    <div className="min-h-screen" style={{ fontFamily: 'var(--font-open-sans)', margin: 0, padding: 0, overflowX: 'hidden', maxWidth: '100vw' }}>
-      {/* Header - Appears on Scroll */}
+    <div
+      className="min-h-screen"
+      style={{
+        fontFamily: 'var(--font-open-sans)',
+        margin: 0,
+        padding: 0,
+        overflowX: 'hidden',
+        maxWidth: '100vw',
+      }}
+    >
       <Header />
-
-      {/* Hero Section - Full viewport with integrated nav */}
       <HeroSection />
-
-      {/* EL DESAFÍO — Unified 1x4 Module */}
-      <GanchosSection />
-
-      {/* Fórmula del Éxito — Inspiration pivot: anxiety → aspiration */}
-      <FormulaExitoSection />
-
-      {/* NUESTROS SERVICIOS — Divider (96px gap after La Fórmula) */}
-      <SectionDivider label="NUESTROS SERVICIOS" bgColor="#ffffff" paddingTop="96px" />
-
-      {/* Promoted Services Section */}
-      <TeamSection />
-
-      {/* Trust Ecosystem Section (includes internal dividers) */}
+      <TheChallenge />
+      <TheFormula />
+      <Services />
       <TrustEcosystemSection />
-
-      {/* CTA Section */}
       <CTASection />
-
-      {/* Footer - Contáctanos */}
       <Footer />
-
-
-
-      {/* Back to Top Button */}
       <BackToTop />
     </div>
   );

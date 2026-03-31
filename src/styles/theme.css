@@ -23,6 +23,7 @@
   /* === TYPOGRAPHY SYSTEM === */
   /* Font Family */
   --font-open-sans: 'Open Sans', sans-serif;
+  --font-math: 'Latin Modern Math', 'Computer Modern', 'STIX Two Math', Georgia, serif;
   
   /* Font Sizes */
   --text-h1: 48px;

@@ -101,15 +101,13 @@ export function HeroSection() {
 
       {/* Hero Content — Left-aligned with generous top spacing */}
       <div
-        className="relative z-10 flex-1 flex items-center"
-        style={{ width: '100%' }}
+        className="relative z-10 flex-1 w-full"
       >
         <div
-          className="w-full relative"
+          className="hero-inner-container w-full h-full relative mx-auto flex items-center"
           style={{
             maxWidth: '1200px',
             padding: '0 max(32px, 5vw)',
-            margin: '0 auto',
           }}
         >
           <div style={{ maxWidth: '720px' }}>
@@ -176,40 +174,40 @@ export function HeroSection() {
               Consulta Gratuita
             </button>
           </div>
-        </div>
-      </div>
 
-      {/* SCROLL indicator — anchored to hero section bottom-right */}
-      <div
-        className="hidden md:flex flex-col items-center"
-        style={{
-          position: 'absolute',
-          right: 'max(32px, 5vw)',
-          bottom: '48px',
-          gap: '8px',
-          zIndex: 10,
-        }}
-      >
-        <span
-          style={{
-            fontFamily: 'var(--font-open-sans)',
-            fontSize: '12px',
-            fontWeight: 700,
-            color: 'rgba(255, 255, 255, 0.5)',
-            letterSpacing: '1.5px',
-            textTransform: 'uppercase',
-            writingMode: 'vertical-lr',
-          }}
-        >
-          SCROLL
-        </span>
-        <div
-          style={{
-            width: '1px',
-            height: '60px',
-            backgroundColor: 'rgba(255, 255, 255, 0.15)',
-          }}
-        />
+          {/* SCROLL indicator — container-relative, anchored to bottom-right inner boundary */}
+          <div
+            className="scroll-indicator-technical hidden md:flex flex-col items-center"
+            style={{
+              position: 'absolute',
+              right: 'max(32px, 5vw)',
+              bottom: '48px', // 8pt Engineering System (6x8)
+              gap: '8px',
+              zIndex: 10,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--font-open-sans)',
+                fontSize: '12px',
+                fontWeight: 700,
+                color: 'rgba(255, 255, 255, 0.5)',
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                writingMode: 'vertical-lr',
+              }}
+            >
+              SCROLL
+            </span>
+            <div
+              style={{
+                width: '1px',
+                height: '60px',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)', // 15% opacity hairline
+              }}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Bottom accent line — solid green brand border */}

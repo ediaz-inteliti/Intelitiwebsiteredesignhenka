@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 import { Linkedin, Twitter, Facebook, Instagram, Mail, Globe } from 'lucide-react';
 
@@ -7,143 +5,6 @@ type NewsletterStatus = 'idle' | 'loading' | 'success' | 'error';
 
 function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-}
-
-/**
- * ChameleonBlueprint — Module [05]
- * Subtle, high-impact line-art schematic of a chameleon as engineered texture.
- * Rendered as inline SVG at low opacity — a blueprint pattern, not an illustration.
- */
-function ChameleonBlueprint() {
-  return (
-    <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '160px',
-        overflow: 'hidden',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        marginTop: '32px',
-      }}
-    >
-      <svg
-        viewBox="0 0 1200 160"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '100%',
-          maxWidth: '1200px',
-          height: '160px',
-          opacity: 0.065,
-        }}
-        aria-hidden="true"
-      >
-        {/* Blueprint grid behind */}
-        <defs>
-          <pattern id="bp-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" strokeWidth="0.4" />
-          </pattern>
-        </defs>
-        <rect width="1200" height="160" fill="url(#bp-grid)" />
-
-        {/* ── CHAMELEON SCHEMATIC ── centered ~x=600 */}
-        {/* Body — main oval */}
-        <ellipse cx="600" cy="105" rx="130" ry="42" fill="none" stroke="#ffffff" strokeWidth="1" />
-
-        {/* Dorsal ridge — spines along the back */}
-        {[0, 15, 30, 45, 60, 75, 90, 105, 120].map((dx, i) => (
-          <line
-            key={i}
-            x1={475 + dx} y1={105 - (i < 3 ? 30 : i < 6 ? 42 : 40 - (i - 6) * 6)}
-            x2={475 + dx} y2={105 - (i < 3 ? 42 : i < 6 ? 52 : 52 - (i - 6) * 7)}
-            stroke="#ffffff" strokeWidth="0.8"
-          />
-        ))}
-
-        {/* Head */}
-        <path
-          d="M 470 95 Q 455 75 440 80 Q 420 68 445 110 Q 460 112 470 105 Z"
-          fill="none" stroke="#ffffff" strokeWidth="1"
-        />
-
-        {/* Eye — circle with crosshair */}
-        <circle cx="440" cy="82" r="6" fill="none" stroke="#ffffff" strokeWidth="0.8" />
-        <line x1="434" y1="82" x2="446" y2="82" stroke="#ffffff" strokeWidth="0.5" />
-        <line x1="440" y1="76" x2="440" y2="88" stroke="#ffffff" strokeWidth="0.5" />
-
-        {/* Snout / tongue line */}
-        <line x1="428" y1="90" x2="390" y2="88" stroke="#ffffff" strokeWidth="0.8" strokeDasharray="3 2" />
-        <circle cx="388" cy="88" r="2.5" fill="none" stroke="#ffffff" strokeWidth="0.8" />
-
-        {/* Casque / head crest */}
-        <path d="M 455 75 L 445 58 L 435 75" fill="none" stroke="#ffffff" strokeWidth="0.8" />
-        <line x1="445" y1="58" x2="445" y2="68" stroke="#ffffff" strokeWidth="0.5" strokeDasharray="2 2" />
-
-        {/* Front legs */}
-        <path d="M 510 130 L 505 148 L 495 148" fill="none" stroke="#ffffff" strokeWidth="1" />
-        <path d="M 505 148 L 505 155" fill="none" stroke="#ffffff" strokeWidth="0.7" />
-        <path d="M 530 132 L 528 150 L 518 152" fill="none" stroke="#ffffff" strokeWidth="1" />
-
-        {/* Rear legs */}
-        <path d="M 660 130 L 668 150 L 678 152" fill="none" stroke="#ffffff" strokeWidth="1" />
-        <path d="M 680 132 L 689 148 L 699 148" fill="none" stroke="#ffffff" strokeWidth="1" />
-
-        {/* Tail — curled spiral */}
-        <path
-          d="M 730 105 Q 760 90 775 100 Q 795 115 780 130 Q 762 145 748 135 Q 738 125 748 118 Q 756 110 760 120"
-          fill="none" stroke="#ffffff" strokeWidth="1"
-        />
-
-        {/* Belly segmentation lines */}
-        {[0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200].map((dx, i) => (
-          <line
-            key={i}
-            x1={490 + dx} y1={117 + (i < 5 ? 0 : i < 8 ? 2 : 0)}
-            x2={490 + dx} y2={128}
-            stroke="#ffffff" strokeWidth="0.6"
-          />
-        ))}
-
-        {/* Scale hex-pattern overlay — small repeating orthogonal markers */}
-        {Array.from({ length: 8 }).map((_, row) =>
-          Array.from({ length: 20 }).map((_, col) => {
-            const cx = 490 + col * 13 + (row % 2) * 6;
-            const cy = 98 + row * 7;
-            return (
-              <rect
-                key={`${row}-${col}`}
-                x={cx - 3} y={cy - 3} width="6" height="6"
-                fill="none" stroke="#ffffff" strokeWidth="0.3"
-                transform={`rotate(45 ${cx} ${cy})`}
-              />
-            );
-          })
-        )}
-
-        {/* Annotation labels — schematic text */}
-        <text x="390" y="70" fontFamily="monospace" fontSize="8" fill="#ffffff" letterSpacing="1">CASQUE</text>
-        <line x1="400" y1="71" x2="440" y2="72" stroke="#ffffff" strokeWidth="0.4" />
-        <text x="315" y="90" fontFamily="monospace" fontSize="8" fill="#ffffff" letterSpacing="1">TONGUE</text>
-        <line x1="365" y1="90" x2="387" y2="88" stroke="#ffffff" strokeWidth="0.4" />
-        <text x="600" y="55" fontFamily="monospace" fontSize="8" fill="#ffffff" letterSpacing="1">DORSAL CREST</text>
-        <line x1="645" y1="58" x2="600" y2="75" stroke="#ffffff" strokeWidth="0.4" />
-        <text x="740" y="55" fontFamily="monospace" fontSize="8" fill="#ffffff" letterSpacing="1">PREHENSILE TAIL</text>
-        <line x1="752" y1="60" x2="752" y2="95" stroke="#ffffff" strokeWidth="0.4" />
-
-        {/* Axis markers — bottom reference line */}
-        <line x1="400" y1="155" x2="800" y2="155" stroke="#ffffff" strokeWidth="0.4" />
-        {[400, 450, 500, 550, 600, 650, 700, 750, 800].map((x, i) => (
-          <g key={i}>
-            <line x1={x} y1="152" x2={x} y2="158" stroke="#ffffff" strokeWidth="0.4" />
-            <text x={x - 5} y="165" fontFamily="monospace" fontSize="6" fill="#ffffff">{x - 400}mm</text>
-          </g>
-        ))}
-      </svg>
-    </div>
-  );
 }
 
 export function Footer() {
@@ -203,7 +64,7 @@ export function Footer() {
   return (
     <footer
       id="contacto"
-      className="pt-20 pb-0"
+      className="pt-20 pb-16"
       style={{ backgroundColor: '#0c344d' }}
     >
       <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
@@ -480,8 +341,6 @@ export function Footer() {
         </div>
       </div>
 
-      {/* ── Module [05]: Chameleon Blueprint Texture ── */}
-      <ChameleonBlueprint />
     </footer>
   );
 }

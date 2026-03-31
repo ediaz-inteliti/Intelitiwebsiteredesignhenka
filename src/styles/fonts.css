@@ -1,1 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+/* Latin Modern Math — specialized mathematical typeface (Computer Modern lineage) */
+@font-face {
+  font-family: 'Latin Modern Math';
+  src: url('https://cdn.jsdelivr.net/gh/nickheal/latin-modern-math-font@master/LatinModernMath-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
