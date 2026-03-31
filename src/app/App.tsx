@@ -2,13 +2,13 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { GanchosSection } from './components/GanchosSection';
 import { FormulaExitoSection } from './components/FormulaExitoSection';
-import { GlobalReachMap } from './components/GlobalReachMap';
+
 import { SectionDivider } from './components/SectionDivider';
 import { TeamSection } from './components/TeamSection';
 import { TrustEcosystemSection } from './components/TrustEcosystemSection';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
-import { ScrollIndicator } from './components/ScrollIndicator';
+
 import { BackToTop } from './components/BackToTop';
 
 export default function App() {
@@ -32,11 +32,6 @@ export default function App() {
       {/* Promoted Services Section */}
       <TeamSection />
 
-      {/* Global Reach Map — Network schematic / KPI annotation (96px gap after Servicios) */}
-      <div style={{ marginTop: '96px' }}>
-        <GlobalReachMap />
-      </div>
-
       {/* Trust Ecosystem Section (includes internal dividers) */}
       <TrustEcosystemSection />
 
@@ -46,8 +41,7 @@ export default function App() {
       {/* Footer - Contáctanos */}
       <Footer />
 
-      {/* Scroll Indicator - Right Side Navigation Dots */}
-      <ScrollIndicator />
+
 
       {/* Back to Top Button */}
       <BackToTop />

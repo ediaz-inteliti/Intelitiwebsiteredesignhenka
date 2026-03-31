@@ -1,133 +1,190 @@
+interface Person {
+  name: string;
+  role: string;
+  company: string;
+  imageSrc: string;
+}
+
+const people: Person[] = [
+  {
+    name: 'Ana Martínez',
+    role: 'Directora de Transformación Digital',
+    company: 'Sector Farmacéutico',
+    imageSrc:
+      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&h=700&fit=crop&crop=faces,top',
+  },
+  {
+    name: 'Carlos Restrepo',
+    role: 'VP de Operaciones',
+    company: 'Consumo Masivo',
+    imageSrc:
+      'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&h=700&fit=crop&crop=faces,top',
+  },
+  {
+    name: 'Daniela Torres',
+    role: 'Gerente de Desarrollo Organizacional',
+    company: 'Bienes de Consumo',
+    imageSrc:
+      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=700&fit=crop&crop=faces,top',
+  },
+  {
+    name: 'Miguel Herrera',
+    role: 'Director General',
+    company: 'Sector Financiero',
+    imageSrc:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=700&fit=crop&crop=faces,top',
+  },
+  {
+    name: 'Valeria Sánchez',
+    role: 'Chief People Officer',
+    company: 'Infraestructura',
+    imageSrc:
+      'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=500&h=700&fit=crop&crop=faces,top',
+  },
+];
+
+const HAIRLINE = '1px solid rgba(11, 51, 76, 0.15)';
+const H_DESKTOP = 140;
+const H_MOBILE = 180;
+
 export function TestimonialsSection() {
-  // Anonymous attribution tied to verified client logos
-  const testimonials = [
-    {
-      quote: "Henka Consulting transformó completamente nuestra organización. Su enfoque estratégico y metodología nos permitieron alcanzar resultados que superaron nuestras expectativas.",
-      role: "CEO",
-      company: "Banistmo",
-      logo: "https://henkaconsulting.com/app/uploads/2021/05/banistmo-logo-1-1.jpg"
-    },
-    {
-      quote: "El acompañamiento durante nuestro proceso de transformación digital fue excepcional. El equipo de Henka demostró un profundo entendimiento de nuestras necesidades.",
-      role: "Director de Operaciones",
-      company: "Atlas",
-      logo: "https://henkaconsulting.com/app/uploads/2021/05/atlas.jpg"
-    },
-    {
-      quote: "Trabajar con Henka fue un punto de inflexión para nuestra empresa. Su experiencia en gestión del cambio hizo la diferencia en la adopción exitosa de nuevos procesos.",
-      role: "VP de Recursos Humanos",
-      company: "Pfizer",
-      logo: "https://henkaconsulting.com/app/uploads/2021/05/pfizer-1.jpg"
-    }
-  ];
-
   return (
-    <section 
-      id="testimoniales"
-      className="py-24"
-      style={{ backgroundColor: '#f8f9fa' }}
-    >
-      <div className="mx-auto max-w-7xl px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 
-            style={{
-              fontFamily: 'var(--font-open-sans)',
-              fontSize: 'var(--text-h2)',
-              fontWeight: 'var(--font-weight-bold)',
-              color: 'var(--henka-navy)',
-              marginBottom: '16px'
-            }}
-          >
-            Clientes, aliados y testimoniales
-          </h2>
-          <p 
-            style={{
-              fontFamily: 'var(--font-open-sans)',
-              fontSize: 'var(--text-body)',
-              color: 'var(--henka-navy)',
-              opacity: 0.7,
-              maxWidth: '600px',
-              margin: '0 auto'
-            }}
-          >
-            Lo que nuestros clientes dicen sobre nosotros
-          </p>
-        </div>
+    <div className="mx-auto ts-root" style={{ maxWidth: '1200px' }}>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+      {/* ── Desktop (≥1024px): 5-column horizontal strip ── */}
+      <div
+        className="ts-desktop"
+        style={{ display: 'flex', alignItems: 'stretch', width: '100%', height: `${H_DESKTOP}px` }}
+      >
+        {people.map((person, index) => (
+          <div key={index} style={{ display: 'flex', alignItems: 'stretch', flex: 1 }}>
+            {/* Portrait frame — overflow:hidden clips the scale transform */}
+            <div style={{ flex: 1, overflow: 'hidden', height: `${H_DESKTOP}px` }}>
+              <img
+                src={person.imageSrc}
+                alt={`${person.name} — ${person.role}`}
+                loading="lazy"
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center 15%',
+                  borderRadius: '0px',
+                  transition: 'transform 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+              />
+            </div>
+            {/* Vertical blueprint hairline between frames */}
+            {index < people.length - 1 && (
+              <div
+                aria-hidden="true"
+                style={{
+                  width: '1px',
+                  height: `${H_DESKTOP}px`,
+                  backgroundColor: 'rgba(11, 51, 76, 0.15)',
+                  flexShrink: 0,
+                }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* ── Tablet (768–1023px): 3×2 grid ── */}
+      <div className="ts-tablet" style={{ display: 'none' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          {people.map((person, index) => (
             <div
               key={index}
-              className="p-8 transition-all duration-300 hover:translate-y-[-4px]"
               style={{
-                backgroundColor: 'var(--henka-white)',
-                padding: '40px',
-                borderRadius: '0px',
-                boxShadow: '0 2px 8px rgba(12, 52, 77, 0.05)'
+                overflow: 'hidden',
+                height: `${H_DESKTOP}px`,
+                borderRight:
+                  index % 3 !== 2 && index !== people.length - 1 ? HAIRLINE : 'none',
+                borderBottom:
+                  Math.floor(index / 3) < Math.floor((people.length - 1) / 3) ? HAIRLINE : 'none',
               }}
             >
-              {/* Company Logo */}
-              <div className="mb-5">
-                <img
-                  src={testimonial.logo}
-                  alt={testimonial.company}
-                  className="object-contain"
-                  style={{
-                    width: '90px',
-                    height: '40px',
-                    filter: 'grayscale(100%)',
-                    opacity: 0.65
-                  }}
-                />
-              </div>
-
-              {/* Quote */}
-              <p
-                className="mb-6"
+              <img
+                src={person.imageSrc}
+                alt={`${person.name} — ${person.role}`}
+                loading="lazy"
                 style={{
-                  fontFamily: 'var(--font-open-sans)',
-                  fontSize: '15px',
-                  fontWeight: 'var(--font-weight-normal)',
-                  color: 'var(--henka-navy)',
-                  lineHeight: '1.7',
-                  fontStyle: 'italic',
-                  flex: 1
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center 15%',
+                  borderRadius: '0px',
+                  transition: 'transform 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 }}
-              >
-                "{testimonial.quote}"
-              </p>
-
-              {/* Attribution */}
-              <div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-open-sans)',
-                    fontSize: '14px',
-                    fontWeight: 'var(--font-weight-bold)',
-                    color: 'var(--henka-navy)',
-                    marginBottom: '2px'
-                  }}
-                >
-                  {testimonial.role}
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-open-sans)',
-                    fontSize: '13px',
-                    fontWeight: 'var(--font-weight-normal)',
-                    color: 'var(--henka-navy)',
-                    opacity: 0.6
-                  }}
-                >
-                  {testimonial.company}
-                </div>
-              </div>
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+              />
             </div>
           ))}
         </div>
       </div>
-    </section>
+
+      {/* ── Mobile (<768px): 2-column stack ── */}
+      <div className="ts-mobile" style={{ display: 'none' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          {people.map((person, index) => (
+            <div
+              key={index}
+              style={{
+                overflow: 'hidden',
+                height: `${H_MOBILE}px`,
+                borderRight:
+                  index % 2 === 0 && index !== people.length - 1 ? HAIRLINE : 'none',
+                borderBottom:
+                  Math.floor(index / 2) < Math.floor((people.length - 1) / 2) ? HAIRLINE : 'none',
+              }}
+            >
+              <img
+                src={person.imageSrc}
+                alt={`${person.name} — ${person.role}`}
+                loading="lazy"
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center 15%',
+                  borderRadius: '0px',
+                  transition: 'transform 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @media (min-width: 1024px) {
+          .ts-desktop { display: flex  !important; }
+          .ts-tablet  { display: none  !important; }
+          .ts-mobile  { display: none  !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .ts-desktop { display: none  !important; }
+          .ts-tablet  { display: block !important; }
+          .ts-mobile  { display: none  !important; }
+        }
+        @media (max-width: 767px) {
+          .ts-desktop { display: none  !important; }
+          .ts-tablet  { display: none  !important; }
+          .ts-mobile  { display: block !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .ts-root img { transition: none !important; }
+        }
+      `}</style>
+    </div>
   );
 }
