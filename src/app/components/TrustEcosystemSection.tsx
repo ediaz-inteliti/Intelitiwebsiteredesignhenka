@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { SectionHeader } from './SectionHeader';
 
 export function TrustEcosystemSection() {
   const [, setIsHovering] = useState(false);
@@ -106,41 +107,14 @@ export function TrustEcosystemSection() {
       {/* === GLOBAL IMPACT DASHBOARD (#ffffff background) === */}
       <div style={{ backgroundColor: '#ffffff', paddingTop: '64px', paddingBottom: '48px' }}>
 
-        {/* ── [section-header] Eyebrow: left-aligned, contained in 1200px grid ── */}
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
-          <span
-            className="section-eyebrow-left"
-            style={{
-              display: 'block',
-              fontFamily: 'var(--font-open-sans)',
-              fontSize: '12px',
-              fontWeight: 700,
-              color: '#0b334c',
-              opacity: 0.6,
-              letterSpacing: '1.5px',
-              lineHeight: '1',
-              textTransform: 'uppercase',
-              whiteSpace: 'nowrap',
-              marginBottom: '16px',
-            }}
-          >
-            RESULTADOS &amp; CONFIANZA
-          </span>
-        </div>
+        {/* ── [section-header] Eyebrow + Hairline — SectionHeader component (px-8 / 1200px) ── */}
+        <SectionHeader label="RESULTADOS & CONFIANZA" />
 
-        {/* ── [hairline-top] 1200px structural hairline — matches grid boundary ── */}
-        <div
-          className="section-hairline mx-auto"
-          style={{
-            maxWidth: '1200px',
-            height: '1px',
-            backgroundColor: 'rgba(11, 51, 76, 0.15)',
-            marginBottom: '48px',
-          }}
-        />
+        {/* Spacer after hairline */}
+        <div style={{ height: '48px' }} />
 
         {/* ── [main-body] Flex Row: Map (flex-grow left) + Title Block (flush-right) ── */}
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
+        <div className="mx-auto px-8" style={{ maxWidth: '1200px' }}>
           <div
             className="results-main-row"
             style={{
@@ -269,7 +243,7 @@ export function TrustEcosystemSection() {
         />
 
         {/* ── [trust-band] Logo row — constrained to 1200px grid ── */}
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
+        <div className="mx-auto px-8" style={{ maxWidth: '1200px' }}>
           {/* Desktop: single row with vertical hairlines */}
           <div
             className="trust-logos-desktop"
@@ -523,30 +497,11 @@ export function TrustEcosystemSection() {
           }}
         />
 
-        {/* [04] RESULTADOS & EXPERIENCIA — Divider INSIDE the gray block */}
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
-          <span
-            style={{
-              display: 'block',
-              fontFamily: 'var(--font-open-sans)',
-              fontSize: '12px',
-              fontWeight: 700,
-              color: '#0b334c',
-              opacity: 0.6,
-              letterSpacing: '1.5px',
-              lineHeight: '1',
-              textTransform: 'uppercase',
-              whiteSpace: 'nowrap',
-              marginBottom: '16px',
-            }}
-          >
-            RESULTADOS & EXPERIENCIA
-          </span>
-          <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(11, 51, 76, 0.15)' }} />
-        </div>
+        {/* [04] RESULTADOS & EXPERIENCIA — SectionHeader component */}
+        <SectionHeader label="RESULTADOS & EXPERIENCIA" />
 
         {/* 48px air between line and heading */}
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '48px max(32px, 5vw) 0' }}>
+        <div className="mx-auto px-8" style={{ maxWidth: '1200px', paddingTop: '48px' }}>
           {/* Typographic Statement — Left-aligned Hook */}
           <h3
             style={{
@@ -711,29 +666,12 @@ export function TrustEcosystemSection() {
           paddingBottom: '120px'
         }}
       >
-        {/* [05] PERSPECTIVAS — Divider inside blog area */}
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)', marginBottom: '64px' }}>
-          <span
-            style={{
-              display: 'block',
-              fontFamily: 'var(--font-open-sans)',
-              fontSize: '12px',
-              fontWeight: 700,
-              color: '#0b334c',
-              opacity: 0.6,
-              letterSpacing: '1.5px',
-              lineHeight: '1',
-              textTransform: 'uppercase',
-              whiteSpace: 'nowrap',
-              marginBottom: '16px',
-            }}
-          >
-            PERSPECTIVAS
-          </span>
-          <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(11, 51, 76, 0.15)' }} />
+        {/* [05] PERSPECTIVAS — SectionHeader component */}
+        <div className="mx-auto" style={{ maxWidth: '1200px', marginBottom: '64px' }}>
+          <SectionHeader label="PERSPECTIVAS" />
         </div>
 
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
+        <div className="mx-auto px-8" style={{ maxWidth: '1200px' }}>
           {/* 3. Interactive Insights/Blog - Hotjar Editorial Layout */}
           <div>
             {/* Header Row: Controls Right */}

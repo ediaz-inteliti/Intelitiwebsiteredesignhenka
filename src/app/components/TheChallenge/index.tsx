@@ -201,17 +201,17 @@ export function TheChallenge() {
       {/* Section Header */}
       <SectionHeader label="EL DESAFÍO" />
 
-      {/* Grid wrapper */}
+      {/* Grid wrapper — constrained to 1200px to align with SectionHeader hairline */}
       <div
         className="desafio-master-wrapper"
         style={{
-          position: 'relative',
-          width: '100%',
+          maxWidth: '1200px',
           margin: '0 auto',
           padding: '16px 0 0 0',
+          position: 'relative',
         }}
       >
-        {/* Hairline infrastructure */}
+        {/* Hairline infrastructure — positioned relative to 1200px container */}
         <div
           aria-hidden="true"
           style={{

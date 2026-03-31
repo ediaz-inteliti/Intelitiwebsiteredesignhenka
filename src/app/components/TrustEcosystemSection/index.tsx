@@ -1,3 +1,6 @@
+import { SectionHeader } from '../SectionHeader';
+
+
 const LINE_COLOR = 'rgba(11, 51, 76, 0.15)';
 
 const clients = [
@@ -21,46 +24,16 @@ export function TrustEcosystemSection() {
       {/* === GLOBAL IMPACT — Map + Text + Logo Band === */}
       <div style={{ backgroundColor: '#ffffff', paddingTop: '64px', paddingBottom: '0' }}>
 
-        {/* Eyebrow */}
-        <div
-          className="mx-auto"
-          style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}
-        >
-          <span
-            className="trust-eyebrow"
-            style={{
-              display: 'block',
-              fontFamily: 'var(--font-open-sans)',
-              fontSize: '12px',
-              fontWeight: 700,
-              color: '#0b334c',
-              opacity: 0.6,
-              letterSpacing: '1.5px',
-              lineHeight: '1',
-              textTransform: 'uppercase',
-              whiteSpace: 'nowrap',
-              marginBottom: '16px',
-            }}
-          >
-            RESULTADOS &amp; CONFIANZA
-          </span>
-        </div>
+        {/* Eyebrow + Hairline — unified SectionHeader component */}
+        <SectionHeader label="RESULTADOS & CONFIANZA" />
 
-        {/* Top hairline */}
-        <div
-          className="trust-hairline mx-auto"
-          style={{
-            maxWidth: '1200px',
-            height: '1px',
-            backgroundColor: LINE_COLOR,
-            marginBottom: '48px',
-          }}
-        />
+        {/* Spacer after hairline */}
+        <div style={{ height: '48px' }} />
 
         {/* Main row: Map (expanded left) + Text (flush-right) */}
         <div
-          className="mx-auto"
-          style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}
+          className="mx-auto px-8"
+          style={{ maxWidth: '1200px' }}
         >
           <div
             className="trust-main-row"
@@ -186,8 +159,8 @@ export function TrustEcosystemSection() {
 
         {/* ── Client Logo Band — single row, full original colors, scaled up ── */}
         <div
-          className="mx-auto"
-          style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}
+          className="mx-auto px-8"
+          style={{ maxWidth: '1200px' }}
         >
           {/* Desktop: single row with vertical hairlines */}
           <div

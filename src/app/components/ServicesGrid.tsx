@@ -310,7 +310,7 @@ export function ServicesGrid() {
 
   return (
     <div className="services-grid-section" style={{ position: 'relative' }}>
-      <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
+      <div className="mx-auto px-8" style={{ maxWidth: '1200px' }}>
 
         {/* Top bounding hairline */}
         <Hairline />

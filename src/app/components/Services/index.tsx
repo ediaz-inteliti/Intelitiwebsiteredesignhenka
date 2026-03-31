@@ -20,13 +20,13 @@ export function Services() {
 
       {/* Section heading */}
       <div
-        className="mx-auto"
-        style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}
+        className="mx-auto px-8"
+        style={{ maxWidth: '1200px' }}
       >
         <h2
           style={{
             fontFamily: 'var(--font-open-sans)',
-            fontSize: '48px',
+            fontSize: 'clamp(32px, 3.5vw, 48px)',
             fontWeight: 700,
             color: NAVY,
             lineHeight: 1.2,
