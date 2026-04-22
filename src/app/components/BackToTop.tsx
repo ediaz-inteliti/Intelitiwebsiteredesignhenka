@@ -30,7 +30,7 @@ export function BackToTop() {
       style={{
         width: '48px',
         height: '48px',
-        backgroundColor: '#0c344d',
+        backgroundColor: 'var(--henka-navy)',
         borderRadius: '0px',
         border: 'none',
         cursor: 'pointer',
@@ -42,10 +42,10 @@ export function BackToTop() {
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = '#84bd2a';
-        e.currentTarget.style.boxShadow = '2px 2px 0px #0b334c';
+        e.currentTarget.style.boxShadow = '2px 2px 0px var(--henka-navy)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = '#0c344d';
+        e.currentTarget.style.backgroundColor = 'var(--henka-navy)';
         e.currentTarget.style.boxShadow = 'none';
       }}
       aria-label="Volver arriba"

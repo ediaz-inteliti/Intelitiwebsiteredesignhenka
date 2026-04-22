@@ -82,7 +82,7 @@ export function GlobalReachMap() {
   }, []);
 
   const LINE_COLOR = 'rgba(11, 51, 76, 0.15)';
-  const NAVY = '#0b334c';
+  const NAVY = 'var(--henka-navy)';
   const GREEN = '#84bd2a';
 
   const stats = [

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const LINE_COLOR = 'rgba(11, 51, 76, 0.15)'; // Equivalent to #0b334c at 15% opacity
-const NAVY = '#0b334c';
+const LINE_COLOR = 'rgba(11, 51, 76, 0.15)'; // Equivalent to var(--henka-navy) at 15% opacity
+const NAVY = 'var(--henka-navy)';
 
 interface SectionHeaderProps {
   label: string;

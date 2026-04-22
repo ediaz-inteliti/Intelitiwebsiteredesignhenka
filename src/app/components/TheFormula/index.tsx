@@ -1,5 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 
+const DIVIDER = '1px solid rgba(255,255,255,0.15)';
+const LINE_COLOR = 'rgba(255,255,255,0.055)';
+
+const variables = [
+  { symbol: 'E',  label: 'Éxito' },
+  { symbol: 'P',  label: 'Procesos y Tecnología Clave' },
+  { symbol: 'ΔT', label: 'Transformación' },
+  { symbol: 'n',  label: 'Grado de Elevación Organizacional' },
+];
+
 export function TheFormula() {
   const [revealed, setRevealed] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -8,31 +18,17 @@ export function TheFormula() {
     const el = sectionRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setRevealed(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.2 }
+      ([entry]) => { if (entry.isIntersecting) { setRevealed(true); io.disconnect(); } },
+      { threshold: 0.15 }
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
-  const LINE_COLOR = 'rgba(255,255,255,0.055)';
-
-  const variables = [
-    { symbol: 'E', label: 'Éxito' },
-    { symbol: 'P', label: 'Procesos y Tecnología Clave' },
-    { symbol: 'ΔT', label: 'Transformación' },
-    { symbol: 'n', label: 'Grado de Elevación Organizacional' },
-  ];
-
   const vis = (delayMs: number): React.CSSProperties => ({
     opacity: revealed ? 1 : 0,
-    transform: revealed ? 'translateY(0)' : 'translateY(18px)',
-    transition: `opacity 0.65s cubic-bezier(0.25, 0, 0, 1) ${delayMs}ms, transform 0.65s cubic-bezier(0.25, 1, 0.5, 1) ${delayMs}ms`,
+    transform: revealed ? 'translateY(0)' : 'translateY(16px)',
+    transition: `opacity 0.6s cubic-bezier(0.25,0,0,1) ${delayMs}ms, transform 0.6s cubic-bezier(0.25,1,0.5,1) ${delayMs}ms`,
   });
 
   return (
@@ -41,10 +37,11 @@ export function TheFormula() {
       id="formula-exito"
       aria-label="Fórmula del Éxito"
       style={{
-        backgroundColor: '#0c344d',
+        backgroundColor: 'var(--henka-navy)',
         position: 'relative',
         overflow: 'hidden',
-        padding: '120px 0 128px',
+        borderRadius: 0,
+        padding: '48px 0',
       }}
     >
       {/* Blueprint grid texture */}
@@ -72,11 +69,12 @@ export function TheFormula() {
           transform: 'translateX(-50%)',
           width: '100vw',
           height: '1px',
-          backgroundColor: 'rgba(11,51,76,0.18)',
+          backgroundColor: 'rgba(255,255,255,0.08)',
           pointerEvents: 'none',
         }}
       />
 
+      {/* ── Content wrapper ── */}
       <div
         style={{
           maxWidth: '1200px',
@@ -86,216 +84,156 @@ export function TheFormula() {
           zIndex: 1,
         }}
       >
-        {/* Eyebrow */}
+        {/* Section header / eyebrow */}
         <div
           style={{
-            ...vis(80),
+            ...vis(60),
             fontFamily: 'var(--font-open-sans)',
             fontSize: '11px',
             fontWeight: 700,
             letterSpacing: '3px',
             color: '#84bd2a',
             textTransform: 'uppercase' as const,
-            marginBottom: '56px',
+            marginBottom: '24px',
           }}
         >
           La Fórmula del Éxito
         </div>
 
-        {/* ═══════════════════════════════════════════
-         *  EQUATION BOX — centered, navy container
-         *  Mathematical typeface: Latin Modern Math
-         * ═══════════════════════════════════════════ */}
+        {/* ── Two-column block ── */}
         <div
-          className="equation-box-navy"
+          className="formula-block"
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
-            padding: '32px 0',
-            marginBottom: '64px',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            border: DIVIDER,
+            borderRadius: 0,
+            marginBottom: '28px',
+            overflow: 'hidden',
           }}
         >
+          {/* LEFT — equation, vertically centered */}
           <div
-            role="img"
-            aria-label="E igual a paréntesis P menos delta T paréntesis elevado a la n"
-            className="equation-display"
             style={{
-              fontFamily: 'var(--font-math)',
-              fontSize: 'clamp(56px, 10vw, 148px)',
-              lineHeight: 1.05,
-              userSelect: 'none',
-              textAlign: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '40px 32px',
+              borderRight: DIVIDER,
+              borderRadius: 0,
             }}
           >
-            {/* E */}
-            <span
+            <div
+              role="img"
+              aria-label="E igual a paréntesis P más delta T paréntesis elevado a la n"
+              className="equation-display"
               style={{
-                ...vis(180),
-                display: 'inline-block',
-                fontWeight: 400,
-                color: '#ffffff',
-                fontStyle: 'italic',
+                fontFamily: 'var(--font-math)',
+                fontSize: 'clamp(40px, 6vw, 96px)',
+                lineHeight: 1.05,
+                userSelect: 'none',
+                whiteSpace: 'nowrap' as const,
               }}
             >
-              E
-            </span>
+              <span style={{ ...vis(160), display: 'inline-block', fontStyle: 'italic', color: '#ffffff' }}>
+                E
+              </span>
+              <span style={{ ...vis(230), display: 'inline-block', color: 'rgba(255,255,255,0.3)', margin: '0 0.1em' }}>
+                =
+              </span>
+              <span style={{ ...vis(300), display: 'inline-block', color: 'rgba(255,255,255,0.3)' }}>
+                (
+              </span>
+              <span style={{ ...vis(370), display: 'inline-block', fontStyle: 'italic', color: '#84bd2a' }}>
+                P
+              </span>
+              <span style={{ ...vis(430), display: 'inline-block', color: 'rgba(255,255,255,0.3)', margin: '0 0.07em' }}>
+                +
+              </span>
+              <span style={{ ...vis(490), display: 'inline-block', fontStyle: 'italic', color: '#84bd2a' }}>
+                ΔT
+              </span>
+              <span style={{ ...vis(550), display: 'inline-block', color: 'rgba(255,255,255,0.3)' }}>
+                )
+              </span>
+              <sup
+                style={{
+                  display: 'inline-block',
+                  fontSize: '0.46em',
+                  fontStyle: 'italic',
+                  color: '#ffffff',
+                  verticalAlign: 'super',
+                  opacity: revealed ? 1 : 0,
+                  transform: revealed ? 'scale(1) translateY(0)' : 'scale(0.3) translateY(6px)',
+                  transition: 'opacity 0.4s cubic-bezier(0.25,0,0,1) 640ms, transform 0.5s cubic-bezier(0.22,1,0.36,1) 640ms',
+                }}
+              >
+                n
+              </sup>
+            </div>
+          </div>
 
-            {/* = */}
-            <span
-              style={{
-                ...vis(260),
-                display: 'inline-block',
-                color: 'rgba(255,255,255,0.32)',
-                margin: '0 0.1em',
-              }}
-            >
-              =
-            </span>
-
-            {/* ( */}
-            <span
-              style={{
-                ...vis(340),
-                display: 'inline-block',
-                color: 'rgba(255,255,255,0.32)',
-              }}
-            >
-              (
-            </span>
-
-            {/* P */}
-            <span
-              style={{
-                ...vis(420),
-                display: 'inline-block',
-                fontWeight: 400,
-                color: '#84bd2a',
-                fontStyle: 'italic',
-              }}
-            >
-              P
-            </span>
-
-            {/* − (minus, not plus) */}
-            <span
-              style={{
-                ...vis(490),
-                display: 'inline-block',
-                color: 'rgba(255,255,255,0.32)',
-                margin: '0 0.07em',
-              }}
-            >
-              −
-            </span>
-
-            {/* ΔT */}
-            <span
-              style={{
-                ...vis(560),
-                display: 'inline-block',
-                fontWeight: 400,
-                color: '#84bd2a',
-                fontStyle: 'italic',
-              }}
-            >
-              ΔT
-            </span>
-
-            {/* ) */}
-            <span
-              style={{
-                ...vis(630),
-                display: 'inline-block',
-                color: 'rgba(255,255,255,0.32)',
-              }}
-            >
-              )
-            </span>
-
-            {/* ⁿ superscript */}
-            <sup
-              style={{
-                display: 'inline-block',
-                fontSize: '0.46em',
-                fontWeight: 400,
-                color: '#ffffff',
-                fontStyle: 'italic',
-                verticalAlign: 'super',
-                opacity: revealed ? 1 : 0,
-                transform: revealed
-                  ? 'scale(1) translateY(0)'
-                  : 'scale(0.35) translateY(6px)',
-                transition:
-                  'opacity 0.4s cubic-bezier(0.25, 0, 0, 1) 720ms, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 720ms',
-              }}
-            >
-              n
-            </sup>
+          {/* RIGHT — 2×2 variable legend */}
+          <div
+            className="formula-vars"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              borderRadius: 0,
+            }}
+          >
+            {variables.map((v, i) => {
+              const isLeftCol  = i % 2 === 0;
+              const isTopRow   = i < 2;
+              return (
+                <div
+                  key={v.symbol}
+                  style={{
+                    ...vis(580 + i * 80),
+                    padding: '28px 24px',
+                    borderRight:  isLeftCol ? DIVIDER : 'none',
+                    borderBottom: isTopRow  ? DIVIDER : 'none',
+                    borderRadius: 0,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-math)',
+                      fontSize: 'clamp(20px, 2.2vw, 32px)',
+                      fontStyle: 'italic',
+                      color: '#84bd2a',
+                      lineHeight: 1,
+                      marginBottom: '8px',
+                    }}
+                  >
+                    {v.symbol}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-open-sans)',
+                      fontSize: '12px',
+                      fontWeight: 400,
+                      color: 'rgba(255,255,255,0.55)',
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {v.label}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Variable legend */}
-        <div
-          className="formula-vars"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            borderTop: '1px solid rgba(255,255,255,0.12)',
-            marginBottom: '80px',
-          }}
-        >
-          {variables.map((v, i) => (
-            <div
-              key={v.symbol}
-              style={{
-                ...vis(680 + i * 90),
-                padding: '28px 24px',
-                paddingLeft: i === 0 ? '0' : '24px',
-                borderRight:
-                  i < variables.length - 1
-                    ? '1px solid rgba(255,255,255,0.12)'
-                    : 'none',
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: 'var(--font-math)',
-                  fontSize: 'clamp(22px, 2.4vw, 34px)',
-                  fontWeight: 400,
-                  fontStyle: 'italic',
-                  color: '#84bd2a',
-                  lineHeight: 1,
-                  marginBottom: '10px',
-                }}
-              >
-                {v.symbol}
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-open-sans)',
-                  fontSize: '13px',
-                  fontWeight: 400,
-                  color: 'rgba(255,255,255,0.58)',
-                  lineHeight: 1.5,
-                }}
-              >
-                {v.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Tagline */}
-        <div style={{ ...vis(1060), maxWidth: '740px' }}>
+        {/* Bottom insight — full width, centered */}
+        <div style={{ ...vis(960), textAlign: 'center' }}>
           <p
             style={{
               fontFamily: 'var(--font-open-sans)',
-              fontSize: 'clamp(18px, 2.1vw, 26px)',
+              fontSize: 'clamp(14px, 1.5vw, 19px)',
               fontWeight: 400,
-              color: 'rgba(255,255,255,0.7)',
-              lineHeight: 1.55,
+              color: 'rgba(255,255,255,0.65)',
+              lineHeight: 1.6,
               margin: 0,
             }}
           >
@@ -308,45 +246,36 @@ export function TheFormula() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        /* Tablet/mobile: stack equation above legend */
+        @media (max-width: 767px) {
+          .formula-block {
+            grid-template-columns: 1fr !important;
+          }
+          .formula-block > div:first-child {
+            border-right: none !important;
+            border-bottom: ${DIVIDER} !important;
+            padding: 32px 24px !important;
+          }
+          .equation-display {
+            font-size: clamp(44px, 12vw, 80px) !important;
+          }
           .formula-vars {
-            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+        /* Small mobile: vars go single column */
+        @media (max-width: 420px) {
+          .formula-vars {
+            grid-template-columns: 1fr !important;
           }
           .formula-vars > div {
             border-right: none !important;
           }
           .formula-vars > div:nth-child(odd) {
-            padding-left: 0 !important;
-            border-right: 1px solid rgba(255,255,255,0.12) !important;
-          }
-          .formula-vars > div:nth-child(even) {
-            padding-left: 24px !important;
-          }
-          .formula-vars > div:nth-child(-n+2) {
-            border-bottom: 1px solid rgba(255,255,255,0.12);
-            padding-bottom: 28px;
-          }
-          .formula-vars > div:nth-child(n+3) {
-            padding-top: 28px;
-          }
-          .equation-display {
-            font-size: clamp(40px, 9vw, 56px) !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .formula-vars {
-            grid-template-columns: 1fr !important;
-          }
-          .formula-vars > div {
-            padding-left: 0 !important;
             border-right: none !important;
-            border-bottom: 1px solid rgba(255,255,255,0.12) !important;
           }
           .formula-vars > div:last-child {
             border-bottom: none !important;
-          }
-          .equation-display {
-            font-size: clamp(32px, 8vw, 48px) !important;
           }
         }
         @media (prefers-reduced-motion: reduce) {

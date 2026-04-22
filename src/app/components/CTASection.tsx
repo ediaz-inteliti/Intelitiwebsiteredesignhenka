@@ -7,7 +7,7 @@ export function CTASection() {
       <div 
         className="absolute inset-0"
         style={{
-          backgroundColor: '#0c344d'
+          backgroundColor: 'var(--henka-navy)'
         }}
       />
       
@@ -16,7 +16,7 @@ export function CTASection() {
           className="mb-6"
           style={{ 
             fontFamily: 'var(--font-open-sans)',
-            fontSize: '48px',
+            fontSize: 'clamp(32px, 5vw, 48px)',
             fontWeight: 'var(--font-weight-bold)',
             color: 'var(--henka-white)',
             lineHeight: '1.2',
@@ -61,7 +61,7 @@ export function CTASection() {
               justifyContent: 'center',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = '2px 2px 0px #0b334c';
+              e.currentTarget.style.boxShadow = '2px 2px 0px var(--henka-navy)';
               e.currentTarget.style.transform = 'translate(-1px, -1px)';
             }}
             onMouseLeave={(e) => {

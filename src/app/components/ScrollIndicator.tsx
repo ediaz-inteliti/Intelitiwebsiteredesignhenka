@@ -85,7 +85,7 @@ export function ScrollIndicator() {
                 fontFamily: 'var(--font-open-sans)',
                 fontSize: '13px',
                 fontWeight: '700',
-                color: '#0b334c',
+                color: 'var(--henka-navy)',
                 letterSpacing: '0.3px',
                 lineHeight: '1.2'
               }}

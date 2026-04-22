@@ -2,7 +2,7 @@ import { ServicesGrid } from '../ServicesGrid';
 import { SectionHeader } from '../SectionHeader';
 
 const LINE_COLOR = 'rgba(11, 51, 76, 0.15)';
-const NAVY = '#0b334c';
+const NAVY = 'var(--henka-navy)';
 
 export function Services() {
   return (
@@ -12,11 +12,11 @@ export function Services() {
         backgroundColor: '#ffffff',
         paddingTop: '96px',
         paddingBottom: '0px',
-        overflowX: 'hidden',
+        overflowX: 'clip',
       }}
     >
       {/* Section Divider — eyebrow + hairline */}
-      <SectionHeader label="NUESTROS SERVICIOS" />
+      <SectionHeader label="SOLUCIONES DE NEGOCIO" />
 
       {/* Section heading */}
       <div
@@ -30,8 +30,7 @@ export function Services() {
             fontWeight: 700,
             color: NAVY,
             lineHeight: 1.2,
-            textAlign: 'left',
-            maxWidth: '720px',
+            textAlign: 'center',
             marginTop: '64px',
             marginBottom: '48px',
           }}

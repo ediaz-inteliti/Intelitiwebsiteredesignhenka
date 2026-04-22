@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { SectionHeader } from '../SectionHeader';
 
 const LINE_COLOR = 'rgba(11, 51, 76, 0.15)';
-const NAVY = '#0b334c';
-const GREEN = '#84bd2a';
+const NAVY = 'var(--henka-navy)';
 
 interface DesafioModule {
   id: string;
-  label: string;
   question: string;
   imageUrl: string;
   imageAlt: string;
@@ -16,28 +14,24 @@ interface DesafioModule {
 const modules: DesafioModule[] = [
   {
     id: 'madurez',
-    label: '01 — MADUREZ',
     question: '¿Está tu organización lo suficientemente madura para afrontar la transformación?',
     imageUrl: `${import.meta.env.BASE_URL}pexels-sora-shimazaki-5668492.jpg`,
     imageAlt: 'Arquitectura corporativa moderna — solidez organizacional',
   },
   {
     id: 'adopcion',
-    label: '02 — ADOPCIÓN',
     question: '¿Tu equipo adoptó los cambios o herramientas implementadas?',
     imageUrl: `${import.meta.env.BASE_URL}pexels-gustavo-fring-6285082.jpg`,
     imageAlt: 'Colaboración profesional en entorno técnico',
   },
   {
     id: 'roi',
-    label: '03 — ROI',
     question: '¿Tus proyectos están dando el retorno de inversión esperado?',
     imageUrl: `${import.meta.env.BASE_URL}pexels-vlada-karpovich-7433836.jpg`,
     imageAlt: 'Reflejos en edificio de vidrio — crecimiento financiero',
   },
   {
     id: 'velocidad',
-    label: '04 — VELOCIDAD',
     question: '¿Tus proyectos avanzan a la velocidad esperada?',
     imageUrl: `${import.meta.env.BASE_URL}pexels-mikael-blomkvist-6476261.jpg`,
     imageAlt: 'Estelas de luz en movimiento — velocidad de ejecución',
@@ -114,30 +108,6 @@ function ModuleCell({ module }: { module: DesafioModule }) {
           }}
         />
 
-        {/* Label chip */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: '24px',
-            backgroundColor: 'rgba(12, 52, 77, 0.90)',
-            padding: '4px 8px',
-            borderRadius: '0px',
-          }}
-        >
-          <span
-            style={{
-              fontFamily: 'var(--font-open-sans)',
-              fontSize: '10px',
-              fontWeight: 700,
-              letterSpacing: '2px',
-              color: GREEN,
-              textTransform: 'uppercase',
-            }}
-          >
-            {module.label}
-          </span>
-        </div>
       </div>
 
       {/* Question block */}
@@ -246,7 +216,7 @@ export function TheChallenge() {
 
       <style>{`
         .desafio-question {
-          color: #0b334c !important;
+          color: var(--henka-navy) !important;
           font-family: var(--font-open-sans) !important;
           font-weight: 700 !important;
           text-align: left !important;

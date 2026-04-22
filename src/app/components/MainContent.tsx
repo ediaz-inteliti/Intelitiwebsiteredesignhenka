@@ -44,7 +44,7 @@ export function MainContent() {
               fontFamily: 'var(--font-open-sans)',
               fontSize: '48px',
               fontWeight: 'var(--font-weight-bold)',
-              color: '#0b334c',
+              color: 'var(--henka-navy)',
               lineHeight: '1.2',
               textAlign: 'left'
             }}
@@ -55,7 +55,7 @@ export function MainContent() {
             style={{ 
               fontFamily: 'var(--font-open-sans)',
               fontSize: '16px',
-              color: '#0b334c',
+              color: 'var(--henka-navy)',
               lineHeight: '1.6',
               maxWidth: '640px',
               textAlign: 'left'
@@ -96,7 +96,7 @@ export function MainContent() {
               style={{
                 width,
                 backgroundColor: isHovered 
-                  ? '#0c344d' 
+                  ? 'var(--henka-navy)' 
                   : index % 2 === 0 ? '#ffffff' : '#f4f6f9',
                 transition: 'all 400ms ease-in-out',
                 cursor: 'pointer',
@@ -136,7 +136,7 @@ export function MainContent() {
                       fontFamily: 'var(--font-open-sans)',
                       fontSize: '18px',
                       fontWeight: '700',
-                      color: '#0b334c',
+                      color: 'var(--henka-navy)',
                       lineHeight: '1.4',
                       textAlign: 'center',
                       whiteSpace: 'nowrap'

@@ -40,34 +40,62 @@ export function Footer() {
   };
 
   const socialLinks = [
-    { icon: Linkedin,  href: '#', label: 'LinkedIn'  },
-    { icon: Twitter,   href: '#', label: 'Twitter'   },
-    { icon: Facebook,  href: '#', label: 'Facebook'  },
+    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Facebook, href: '#', label: 'Facebook' },
     { icon: Instagram, href: '#', label: 'Instagram' },
   ];
 
   const serviceLinks = [
     { label: 'Diagnóstico Organizacional', href: '#diagnostico' },
-    { label: 'Gestión del Cambio',         href: '#cambio'      },
-    { label: 'Coaching Ejecutivo',         href: '#coaching'    },
-    { label: 'Formación & Desarrollo',     href: '#formacion'   },
-    { label: 'Transformación Cultural',    href: '#cultura'     },
+    { label: 'Gestión del Cambio', href: '#cambio' },
+    { label: 'Coaching Ejecutivo', href: '#coaching' },
+    { label: 'Formación & Desarrollo', href: '#formacion' },
+    { label: 'Transformación Cultural', href: '#cultura' },
   ];
 
   const quickLinks = [
-    { label: 'Historia',              href: '#historia'  },
-    { label: 'Valores',               href: '#valores'   },
-    { label: 'Trabaja con nosotros',  href: '#carreras'  },
-    { label: 'Blog',                  href: '#blog'      },
+    { label: 'Historia', href: '#historia' },
+    { label: 'Valores', href: '#valores' },
+    { label: 'Trabaja con nosotros', href: '#carreras' },
+    { label: 'Blog', href: '#blog' },
   ];
 
   return (
     <footer
       id="contacto"
       className="pt-20 pb-16"
-      style={{ backgroundColor: '#0c344d' }}
+      style={{
+        backgroundColor: 'var(--henka-navy)',
+        position: 'relative',
+        overflow: 'hidden',
+        borderTop: '1px solid rgba(255, 255, 255, 0.12)',
+      }}
     >
-      <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)' }}>
+      {/* Chameleon watermark — official brand mascot, emerging from bottom-left edge */}
+      <img
+        src={`${import.meta.env.BASE_URL}Chamaleon.svg`}
+        aria-hidden="true"
+        alt=""
+        draggable={false}
+        className="footer-watermark"
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: '-2%',
+          height: '85%',
+          maxHeight: '520px',
+          width: 'auto',
+          objectFit: 'contain',
+          display: 'block',
+          opacity: 0.15,
+          mixBlendMode: 'screen',
+          zIndex: 1,
+          pointerEvents: 'none',
+          userSelect: 'none',
+        } as React.CSSProperties}
+      />
+      <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 max(32px, 5vw)', position: 'relative', zIndex: 10 }}>
         {/* 4-Column Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
@@ -118,7 +146,7 @@ export function Footer() {
 
           {/* Column 2: Services */}
           <div>
-            <h4
+            <h3
               className="mb-6"
               style={{
                 fontFamily: 'var(--font-open-sans)',
@@ -129,7 +157,7 @@ export function Footer() {
               }}
             >
               Servicios
-            </h4>
+            </h3>
             <ul className="space-y-3">
               {serviceLinks.map((link, index) => (
                 <li key={index}>
@@ -154,7 +182,7 @@ export function Footer() {
 
           {/* Column 3: Quick Links */}
           <div>
-            <h4
+            <h3
               className="mb-6"
               style={{
                 fontFamily: 'var(--font-open-sans)',
@@ -165,7 +193,7 @@ export function Footer() {
               }}
             >
               Empresa
-            </h4>
+            </h3>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -190,7 +218,7 @@ export function Footer() {
 
           {/* Column 4: Newsletter & Contact */}
           <div>
-            <h4
+            <h3
               className="mb-6"
               style={{
                 fontFamily: 'var(--font-open-sans)',
@@ -201,7 +229,7 @@ export function Footer() {
               }}
             >
               Suscríbete
-            </h4>
+            </h3>
             <p
               className="mb-4"
               style={{

@@ -42,7 +42,7 @@ export function FormulaExitoSection() {
       id="formula-exito"
       aria-label="Fórmula del Éxito"
       style={{
-        backgroundColor: '#0c344d',
+        backgroundColor: 'var(--henka-navy)',
         position: 'relative',
         overflow: 'hidden',
         padding: '120px 0 128px',

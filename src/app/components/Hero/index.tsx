@@ -3,7 +3,7 @@ export function HeroSection() {
     <section
       id="hero"
       className="relative flex flex-col min-h-[600px] md:min-h-[100vh]"
-      style={{ overflow: 'hidden' }}
+      style={{ overflow: 'hidden', backgroundColor: '#0c344d' }}
     >
       {/* Video Background */}
       <video
@@ -11,14 +11,13 @@ export function HeroSection() {
         loop
         muted
         playsInline
-        poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+        controls={false}
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 0 }}
+        aria-hidden="true"
       >
-        <source
-          src="https://github.com/ediaz-inteliti/henka-web/raw/refs/heads/main/mixkit-green-vailed-chameleon-seen-from-one-side-1489-hd-ready.mp4"
-          type="video/mp4"
-        />
+        <source src={`${import.meta.env.BASE_URL}video.mp4`} type="video/mp4" />
       </video>
 
       {/* Navy Overlay at 65% opacity */}
@@ -37,56 +36,6 @@ export function HeroSection() {
           pointerEvents: 'none',
         }}
       />
-
-      {/* Transparent Navigation Bar */}
-      <nav
-        className="relative z-10 w-full"
-        style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}
-      >
-        <div
-          className="mx-auto flex items-center justify-between"
-          style={{
-            maxWidth: '1200px',
-            padding: '0 max(32px, 5vw)',
-            height: '80px',
-          }}
-        >
-          <div className="flex items-center flex-shrink-0">
-            <img
-              src="https://henkaconsulting.com/app/uploads/2026/02/logo_henka.svg"
-              alt="Henka Consulting"
-              className="h-10 md:h-12 w-auto"
-              style={{ filter: 'brightness(0) invert(1)' }}
-            />
-          </div>
-
-          <button
-            className="px-8 py-3"
-            style={{
-              fontFamily: 'var(--font-open-sans)',
-              fontSize: '14px',
-              fontWeight: 700,
-              backgroundColor: '#84bd2a',
-              color: '#ffffff',
-              borderRadius: '0px',
-              border: 'none',
-              cursor: 'pointer',
-              letterSpacing: '0.3px',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow =
-                '2px 2px 0px rgba(255,255,255,0.3)';
-              e.currentTarget.style.transform = 'translate(-1px, -1px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = 'none';
-              e.currentTarget.style.transform = 'translate(0, 0)';
-            }}
-          >
-            Consulta Gratuita
-          </button>
-        </div>
-      </nav>
 
       {/* ─────────────────────────────────────────────────────────────
        *  Hero Content Area — flex-1 fills remaining section height

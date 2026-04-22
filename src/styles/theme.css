@@ -9,7 +9,6 @@
   /* === COLOR PALETTE === */
   /* Primary Navy - Headers/Footers */
   --henka-navy: #0c344d;
-  --henka-navy-alt: #0b334c;
   
   /* Action Green - Primary CTAs */
   --henka-green: #84bd2a;
@@ -183,10 +182,15 @@
     @apply border-border outline-ring/50;
   }
 
+  *:focus-visible {
+    outline: 2px solid var(--henka-navy);
+    outline-offset: 0px;
+  }
+
   html {
     font-size: 16px;
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
@@ -194,8 +198,8 @@
     font-family: var(--font-open-sans);
     font-size: var(--text-body);
     font-weight: var(--font-weight-normal);
-    color: var(--henka-navy-alt);
-    overflow-x: hidden;
+    color: var(--henka-navy);
+    overflow-x: clip;
   }
 
   /**
@@ -208,7 +212,7 @@
     font-family: var(--font-open-sans);
     font-size: var(--text-h1);
     font-weight: var(--font-weight-extrabold);
-    color: var(--henka-navy-alt);
+    color: var(--henka-navy);
     line-height: 1.2;
   }
 
@@ -216,7 +220,7 @@
     font-family: var(--font-open-sans);
     font-size: var(--text-h2);
     font-weight: var(--font-weight-bold);
-    color: var(--henka-navy-alt);
+    color: var(--henka-navy);
     line-height: 1.3;
   }
 
@@ -224,7 +228,7 @@
     font-family: var(--font-open-sans);
     font-size: 24px;
     font-weight: var(--font-weight-bold);
-    color: var(--henka-navy-alt);
+    color: var(--henka-navy);
     line-height: 1.4;
   }
 
@@ -232,7 +236,7 @@
     font-family: var(--font-open-sans);
     font-size: 20px;
     font-weight: var(--font-weight-semibold);
-    color: var(--henka-navy-alt);
+    color: var(--henka-navy);
     line-height: 1.4;
   }
 
@@ -240,7 +244,7 @@
     font-family: var(--font-open-sans);
     font-size: var(--text-body);
     font-weight: var(--font-weight-normal);
-    color: var(--henka-navy-alt);
+    color: var(--henka-navy);
     line-height: 1.6;
   }
 

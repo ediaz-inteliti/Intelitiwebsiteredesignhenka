@@ -13,7 +13,7 @@ import { useState } from 'react';
  *            Radius:  0px enforced on container + img
  * Content: Question only — no body copy
  * Type:    Open Sans Bold clamp(16px,1.5vw,20px), strictly Left-Aligned
- *          Question fill: Solid Dark Navy #0b334c @ 100% opacity
+ *          Question fill: Solid Dark Navy var(--henka-navy) @ 100% opacity
  *          Label accent:  Action Green #84bd2a (overlay chip only)
  * Radius:  0px everywhere — cells, images, overlays, section
  * Lines:   1px hairlines at rgba(11,51,76,0.15)
@@ -27,7 +27,7 @@ import { useState } from 'react';
  */
 
 const LINE_COLOR = 'rgba(11, 51, 76, 0.15)';
-const NAVY = '#0b334c';
+const NAVY = 'var(--henka-navy)';
 const GREEN = '#84bd2a';
 
 interface DesafioModule {
@@ -197,8 +197,8 @@ function ModuleCell({ module }: ModuleCellProps) {
             fontFamily: 'var(--font-open-sans)',
             fontSize: 'clamp(14px, 1.3vw, 18px)',
             fontWeight: 700,
-            /* Typeset v2.2: Solid Dark Navy #0b334c @ 100% — locked */
-            color: '#0b334c',
+            /* Typeset v2.2: Solid Dark Navy var(--henka-navy) @ 100% — locked */
+            color: 'var(--henka-navy)',
             lineHeight: '24px',
             margin: 0,
             letterSpacing: '-0.2px',
@@ -332,9 +332,9 @@ export function GanchosSection() {
 
       {/* ── Responsive overrides ── */}
       <style>{`
-        /* Typeset v2.2 — Question fill: Solid Dark Navy #0b334c @ 100% */
+        /* Typeset v2.2 — Question fill: Solid Dark Navy var(--henka-navy) @ 100% */
         .desafio-question {
-          color: #0b334c !important;
+          color: var(--henka-navy) !important;
           font-family: var(--font-open-sans) !important;
           font-weight: 700 !important;
           text-align: left !important;

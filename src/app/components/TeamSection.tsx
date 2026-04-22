@@ -17,7 +17,7 @@ export function TeamSection() {
             fontFamily: 'var(--font-open-sans)',
             fontSize: '48px',
             fontWeight: '700',
-            color: '#0b334c',
+            color: 'var(--henka-navy)',
             lineHeight: '1.2',
             textAlign: 'left',
             maxWidth: '720px',

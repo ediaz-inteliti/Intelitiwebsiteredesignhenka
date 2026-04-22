@@ -14,7 +14,7 @@ export function SectionDivider({ label, bgColor = '#ffffff', paddingTop = '128px
             fontFamily: 'var(--font-open-sans)',
             fontSize: '12px',
             fontWeight: 700,
-            color: '#0b334c',
+            color: 'var(--henka-navy)',
             opacity: 0.6,
             letterSpacing: '1.5px',
             lineHeight: '1',
